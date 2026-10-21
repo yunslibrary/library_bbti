@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap');
+
+@font-face {
+  font-family: 'SeoulNamsan';
+  font-weight: 500;
+  src: local('서울남산체 M'), local('SeoulNamsanM'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/seoul/SeoulNamsanMedium.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SeoulNamsan';
+  font-weight: 700;
+  src: local('서울남산체 B'), local('SeoulNamsanB'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/seoul/SeoulNamsanBold.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SeoulHangang';
+  font-weight: 700;
+  src: local('서울한강체 B'), local('SeoulHangangB'),
+       url('https://cdn.jsdelivr.net/gh/webfontworld/seoul/SeoulHangangBold.woff2') format('woff2');
+  font-display: swap;
+}
+
+:root {
+  /* --- Beige & Navy Sophisticated Palette --- */
+  --primary-color: #1B263B;
+  --secondary-color: #415A77;
+  --accent-color: #C89B6E;
+
+  --bg-color: #F7F5F0;
+  --card-bg: #FFFFFF;
+  --header-bg: #1B263B;
+
+  --text-color: #1B263B;
+  --text-muted: #526071;
+
+  --font-main: 'Gowun Dodum', 'SeoulNamsan', 'SUIT', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-title: 'Gowun Dodum', 'SeoulHangang', 'SUIT', sans-serif;
+
+  --shadow-sm: 0 4px 10px -2px rgba(27, 38, 59, 0.06);
+  --shadow-md: 0 10px 20px -5px rgba(27, 38, 59, 0.1);
+  --shadow-lg: 0 20px 30px -8px rgba(27, 38, 59, 0.12);
+  --shadow-hover: 0 16px 32px -8px rgba(27, 38, 59, 0.16);
+
+  --radius: 1.25rem;
+  --transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Print Optimization (A4 Fit) */
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  .sidebar,
+  .page-header-actions,
+  .submit-btn,
+  .page-header-actions button,
+  .page-header-actions a,
+  header button,
+  header a,
+  .node-actions,
+  iframe,
+  #globalSubmitBtn,
+  #studentInfoPanel button,
+  .sidebar-footer,
+  #admin-login-trigger,
+  .admin-login-trigger,
+  .back-home-btn,
+  .export-modal,
+  #exportModal,
+  #exportTriggerBtn,
+  #exportSidebarBtn,
+  footer {
+    display: none !important;
+  }
+
+  body,
+  html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .main-layout {
+    display: block;
+    width: 100%;
+  }
+
+  .container,
+  .workspace,
+  .canvas-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  body {
+    zoom: 90%;
+  }
+
+  input,
+  textarea {
+    border: 1px solid #cbd5e1;
+    background: transparent;
+    resize: none;
+    font-size: 11pt;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  background-image:
+    radial-gradient(#E5DEC9 1.5px, transparent 1.5px),
+    radial-gradient(#DCE2EC 1.5px, #F7F5F0 1.5px);
+  background-size: 36px 36px;
+  background-position: 0 0, 18px 18px;
+  color: var(--text-color);
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;
+}
+
+/* =========================================================
+   Beige & Navy Worksheet Top Header Title Design
+   ========================================================= */
+header {
+  background: linear-gradient(135deg, #1B263B 0%, #273752 60%, #334768 100%);
+  padding: 2.3rem 1.5rem 2.1rem;
+  text-align: center;
+  margin-bottom: 2.25rem;
+  border-bottom: 4px solid #C89B6E;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 26px -8px rgba(27, 38, 59, 0.22);
+}
+
+header::before {
+  content: '✨ 한 칸씩 채우다보면 한 뼘 자라는 독서 활동지';
+  display: inline-block;
+  padding: 5px 16px;
+  background: rgba(247, 245, 240, 0.14);
+  border: 1.5px solid rgba(200, 155, 110, 0.65);
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #F5CBA7;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.65rem;
+}
+
+header.modern-worksheet-header::before {
+  content: '';
+  display: block;
+  padding: 0;
+  border: none;
+}
+
+header h1 {
+  font-family: var(--font-title);
+  font-size: 2.25rem;
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+  color: #FAF8F5;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+header h1::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  border-radius: 9999px;
+  background: #C89B6E;
+  margin: 14px auto 0;
+}
+
+header p {
+  font-size: 1.05rem;
+  color: #E2DCD0;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  font-family: var(--font-main);
+}
+
+/* Container */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4.5rem;
+  width: 100%;
+  flex: 1;
+}
+
+/* Dashboard Menu Grid (Restored & Beige/Navy Styled) */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.menu-item {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  text-decoration: none;
+  color: var(--text-color);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border: 2.5px solid #E2D9C8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+}
+
+.menu-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-color) !important;
+}
+
+.menu-item h3 {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  margin: 1rem 0 0.5rem;
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.menu-item p {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+}
+
+/* Page Header Actions & Student Info Bar */
+.page-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #FFFFFF;
+  padding: 1.25rem 1.5rem;
+  border-radius: 1.25rem;
+  border: 2.5px solid #E2D9C8;
+  box-shadow: 0 5px 0 #E2D9C8;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.25rem;
+  background: #F4EFE6;
+  color: #1B263B;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: var(--transition);
+  border: 1.5px solid #D8CEBE;
+  font-size: 0.92rem;
+}
+
+.back-link:hover {
+  background: #1B263B;
+  color: #FFFFFF;
+  border-color: #1B263B;
+  transform: translateX(-2px);
+}
+
+/* Workspace Card */
+.workspace {
+  background: #FFFFFF;
+  padding: 3rem;
+  border-radius: 1.75rem;
+  box-shadow: 0 8px 0 #E2D9C8, 0 14px 28px rgba(27, 38, 59, 0.06);
+  min-height: 560px;
+  border: 3px solid #E2D9C8;
+}
+
+h2 {
+  font-family: var(--font-title);
+  color: #1B263B;
+  margin-bottom: 20px;
+  font-weight: 700;
+  border-left: 5px solid #C89B6E;
+  padding-left: 14px;
+}
+
+/* Forms & Inputs */
+textarea,
+input[type="text"],
+input[type="date"],
+input[type="password"] {
+  width: 100%;
+  border: 2px solid #E2D9C8;
+  border-radius: 0.85rem;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #1B263B;
+  background: #FAF8F5;
+  transition: var(--transition);
+}
+
+textarea:focus,
+input:focus {
+  border-color: #1B263B;
+  background: #FFFFFF;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(27, 38, 59, 0.12);
+}
+
+::placeholder {
+  color: #8D99AE;
+}
+
+/* Buttons */
+.btn-primary,
+.print-btn {
+  background: #1B263B;
+  color: #FAF8F5;
+  border: 2px solid #1B263B;
+  border-radius: 9999px;
+  padding: 11px 22px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 0 #C89B6E;
+}
+
+.btn-primary:hover,
+.print-btn:hover {
+  background: #273752;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #C89B6E;
+}
+
+/* Layout Grids */
+.kwl-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.kwl-column {
+  border: 2.5px solid #D8CEBE;
+  border-radius: 1.25rem;
+  padding: 22px;
+  background: #FAF8F5;
+  box-shadow: 0 4px 0 #E2D9C8;
+  transition: var(--transition);
+}
+
+.kwl-column h3 {
+  font-family: var(--font-title);
+  border-bottom: 2px dashed #C89B6E;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: #1B263B;
+}
+
+.kwl-column textarea {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+.mindmap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.split-column {
+  background: #FAF8F5;
+  border: 2px solid #D8CEBE;
+  border-radius: 1.25rem;
+  padding: 20px;
+}
+
+.split-column h3 {
+  font-family: var(--font-title);
+  color: #1B263B;
+  margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2.5rem 0;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: #EFECE6;
+  border-top: 2px solid #E2D9C8;
+}
+
+/* Floating Back Home Button */
+.back-home-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #1B263B;
+  color: #FAF8F5;
+  padding: 12px 22px;
+  text-decoration: none;
+  border-radius: 9999px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 2px solid #C89B6E;
+  box-shadow: 0 5px 0 #C89B6E, 0 10px 20px rgba(27, 38, 59, 0.25);
+  z-index: 9999;
+  transition: transform 0.2s;
+}
+
+.back-home-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.75rem;
+  }
+
+  .container {
+    padding: 0 1rem 2rem;
+  }
+
+  .workspace {
+    padding: 1.5rem;
+  }
+
+  .kwl-grid,
+  .mindmap-grid,
+  .split-grid {
+    grid-template-columns: 1fr;
+  }
+}
